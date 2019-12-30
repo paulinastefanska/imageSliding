@@ -9,8 +9,9 @@
   },
   "main": "app.js",
   "scripts": {
-    "start": "webpack-dev-server --inline --progress --colors --host 0.0.0.0",
-    "build": "webpack --config ./webpack.config.prod.js"
+    "start": "webpack-dev-server --config ./webpack.config.js",
+    "prod": "webpack --config ./webpack.config.prod.js",
+    "dev": "webpack --config ./webpack.config.js"
   },
   "keywords": [
     "webpack",

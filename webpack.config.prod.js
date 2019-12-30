@@ -7,7 +7,7 @@ const CopyPlugin = require("copy-webpack-plugin");
 module.exports = {
   mode: "production",
   entry: {
-    main: "./js/app.js"
+    main: "./src/js/app.js"
   },
   output: {
     filename: "js/[name]-[contenthash].js",
@@ -38,13 +38,13 @@ module.exports = {
 
   plugins: [
     new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({ template: "./index.html" }),
+    new HtmlWebpackPlugin({ template: "./src/template.html" }),
     new MiniCssExtractPlugin({
       filename: "css/[name]-[contenthash].css"
     }),
     new CopyPlugin([
       {
-        from: "public/assets",
+        from: "public/images",
         to: "images"
       }
     ])

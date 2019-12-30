@@ -1,20 +1,22 @@
 const path = require("path");
 const webpack = require("webpack");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: "./js/app.js",
-
   mode: "development",
+  entry: {
+    main: "./src/js/app.js"
+  },
 
   output: {
-    path: path.resolve(__dirname, "build"),
-    filename: "[name].bundle.js",
-    publicPath: "/"
+    filename: "js/[name].js",
+    path: path.resolve(__dirname, "build")
   },
 
   devServer: {
-    contentBase: path.join(__dirname, "public"),
+    open: true,
+    contentBase: path.resolve(__dirname, "public"),
     compress: true,
     port: 3000,
     hot: true
@@ -28,6 +30,10 @@ module.exports = {
         use: "babel-loader"
       },
       {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"]
+      },
+      {
         test: /\.scss$/,
         use: ["style-loader", "css-loader", "sass-loader"]
       }
@@ -35,7 +41,8 @@ module.exports = {
   },
 
   plugins: [
-    new HtmlWebpackPlugin({ template: "./index.html" }),
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({ template: "./src/template.html" }),
     new webpack.HotModuleReplacementPlugin()
   ]
 };
