@@ -5,4 +5,5 @@ Mouse and touch image sliding JS.
 - HTML,
 - CSS, SASS,
 - JS,
+- RWD,
 - Webpack.
